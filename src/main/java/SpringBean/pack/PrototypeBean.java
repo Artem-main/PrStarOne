@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class PrototypeBean {
     public PrototypeBean() {
-        System.out.println("Prototype");
+        System.out.println("\n\n\nPrototype");
     }
 }

@@ -38,7 +38,7 @@ public class Controller {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/clients")
+    @GetMapping("/contacts")
     public ResponseEntity<List<ContactParams>> read() {
         final List<ContactParams> clients = clientService.readAll();
 

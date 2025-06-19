@@ -1,10 +1,55 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Books Shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+table, th, td, h1 {
+  border:1px solid black;
+    text-align: center;
+}
+</style>
 </head>
 <body>
-<p th:text="|Hello, ${name}!|" />
+    <h1>Книжный магазин</h1>
+    
+    <h2>Таблица книг</h2>
+    <table style="width:100%">
+      <tr>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Genre</th>
+      </tr>
+      <tr>
+        <td>Three Beer</td>
+        <td>Beer</td>
+        <td>True Story</td>
+      </tr>
+      <tr>
+        <td>Two Beer</td>
+        <td>Francisco Chang</td>
+        <td>Tale</td>
+      </tr>
+       <tr>
+        <td>One Beer</td>
+        <td>Francisco Chang</td>
+        <td>Story</td>
+      </tr>
+      </table>
+      
+      <h2>Форма добавления книги</h2>
+
+<form action="/action_page.php">
+  <label for="fname">Book name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  
+  <label for="lname">Author</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  
+  <label for="lname">Genre</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  
+  <input type="submit" value="Отправить"><br>
+</form> 
 </body>
 </html>

@@ -4,14 +4,22 @@
     <title>Books Shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
-table, th, td, h1 {
+        body {
+            background-color:antiquewhite;
+        }
+table, th, td {
   border:1px solid black;
     text-align: center;
 }
+        h1 {
+            color: blueviolet;
+            text-align: center;
+        }
 </style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Книжный магазин</h1>
+    <h1 class="h1BooksShop">Книжный магазин</h1>
     
     <h2>Таблица книг</h2>
     <table style="width:100%">
@@ -43,11 +51,11 @@ table, th, td, h1 {
   <label for="fname">Book name:</label><br>
   <input type="text" id="fname" name="fname"><br>
   
-  <label for="lname">Author</label><br>
-  <input type="text" id="lname" name="lname"><br>
+  <label for="author">Author</label><br>
+  <input type="text" id="author" name="author"><br>
   
-  <label for="lname">Genre</label><br>
-  <input type="text" id="lname" name="lname"><br>
+  <label for="genre">Genre</label><br>
+  <input type="text" id="genre" name="genre"><br>
   
   <input type="submit" value="Отправить"><br>
 </form> 

@@ -1,6 +1,7 @@
 package edu;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class DefaultCustomArrayList<E> implements CustomArrayList<E> {
@@ -12,16 +13,14 @@ public class DefaultCustomArrayList<E> implements CustomArrayList<E> {
 
     @Override
     public boolean add(E element) {
+        list.addAll(Collections.singleton(element));
         return true;
     }
 
     @Override
     public boolean remove(E element) {
+        list.remove(1);
         return  list.contains(element);
-    }
-
-    private void remove(int index) {
-        list.remove(index);
     }
 
     @Override
@@ -36,15 +35,22 @@ public class DefaultCustomArrayList<E> implements CustomArrayList<E> {
 
     @Override
     public boolean isEmpty() {
+        if (list.isEmpty()) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public void clear() {
+        list.clear();
     }
 
     @Override
     public boolean contains(E element) {
+        if (list.contains(element)) {
+            return true;
+        }
         return false;
     }
 

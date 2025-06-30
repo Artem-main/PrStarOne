@@ -1,3 +1,5 @@
+package Other;
+
 public abstract class Univers {
     public int age;
     public String name;

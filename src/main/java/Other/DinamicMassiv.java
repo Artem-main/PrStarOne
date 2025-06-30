@@ -1,3 +1,5 @@
+package Other;
+
 import java.util.Arrays;
 
 public class DinamicMassiv {

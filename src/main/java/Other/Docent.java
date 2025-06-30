@@ -1,3 +1,5 @@
+package Other;
+
 public class Docent extends Univers {
     @Override
     public void voice () {

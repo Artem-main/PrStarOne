@@ -1,6 +1,9 @@
 package ShippingCostHomework;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShippingCostTest {
@@ -29,10 +32,11 @@ class ShippingCostTest {
                 "Для '3' ожидался коэфф. 1.4");
     }
 
-    @Test
-    void price() {
+    @ParameterizedTest(name = "{index} - расстояние доставки {0} км")
+    @ValueSource(ints = { 30, 35 })
+    void price(int distance) {
         assertEquals(1680,
-                new ShippingCost().Price("Y", 30,"Y",3),
+                new ShippingCost().Price("Y", distance,"Y",3),
                 "Ожидалась стоимость 1680");
     }
 }

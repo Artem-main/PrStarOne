@@ -6,7 +6,7 @@ public class ShippingCost {
         int minDeliveryPrice = 400;
         double deliveryPrice = 0;
         if (dist > 30 && frag.equals("Y")) {
-            System.out.println("Максимальное расстояние для хрупкого груза " );
+            throw new IllegalArgumentException("Нельзя везти хрупкий груз дальше 30 км");
         } else deliveryPrice = (new DimensionsCost().DimensionsCost(dim) +
                 new DeliveryDistanceCost().DeliveryDistanceCost(dist) +
                 new FragilityCost().Fragility(frag) +

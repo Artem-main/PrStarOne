@@ -51,4 +51,17 @@ class ShippingCostTest {
                 new ShippingCost().Price(dim, dist, frag, ratio),
                 "Неверная стоимость доставки");
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "Y, 30, Y, 3, 1680, 200, 300, 1.4",
+            "N, 10, N, 1, 600, 100, 0, 1.0"
+    })
+    void fullTest(String dim, int dist, String frag, int ratio, int total, int dimCost, int fragCost, double workload) {
+        assertAll(
+                () -> assertEquals(dimCost, new DimensionsCost().DimensionsCost(dim), "Неверная стоимость габаритов"),
+                () -> assertEquals(fragCost, new FragilityCost().Fragility(frag), "Неверная стоимость хрупкости"),
+                () -> assertEquals(total, new ShippingCost().Price(dim, dist, frag, ratio), "Неверная итоговая стоимость")
+        );
+    }
 }

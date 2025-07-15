@@ -17,7 +17,7 @@ public class ProductRepositoryTest {
     public void mockGetByNameTest() {
         try (MockedConstruction<ProductRepository> mock = mockConstruction(ProductRepository.class)) {
             ProductRepository productRepository = new ProductRepository();
-            when(productRepository.getByName("tv")).thenReturn(new Product("tv"));
+            when(productRepository.getByName("tv")).thenReturn(new Product("tv", 100.0));
 
             assertEquals(0, productRepository.size());
             assertNotNull(productRepository.getByName("tv"));

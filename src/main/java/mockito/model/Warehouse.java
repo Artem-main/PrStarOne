@@ -9,7 +9,7 @@ public class Warehouse {
     private int distance;
     private List<Stock> stocks = new ArrayList<>();
 
-    public Warehouse() {
+    public Warehouse(String main_warehouse) {
     }
 
     public Warehouse(String name, int distance) {

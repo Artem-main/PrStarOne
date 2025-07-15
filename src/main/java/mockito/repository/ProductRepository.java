@@ -8,11 +8,11 @@ public class ProductRepository {
     private List<Product> products = new ArrayList<>();
 
     public ProductRepository() {
-        add(new Product("phone")); // 0
-        add(new Product("laptop")); // 1
-        add(new Product("printer")); // 2
-        add(new Product("monitor")); // 3
-        add(new Product("keyboard")); // 4
+        add(new Product("phone", 100.0)); // 0
+        add(new Product("laptop", 100.0)); // 1
+        add(new Product("printer", 100.0)); // 2
+        add(new Product("monitor", 100.0)); // 3
+        add(new Product("keyboard", 100.0)); // 4
     }
 
     public Product add(Product product) {

@@ -5,13 +5,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyArrayListTest {
 
     private MyArrayList <Integer> myArrayList;
+    private Iterator <Integer> myIterator;
 
     @BeforeEach
     void setUp() {
@@ -28,6 +31,7 @@ class MyArrayListTest {
     @Test
     void remove() {
         myArrayList.remove(1);
+        assertFalse(myArrayList.contains(1), "Элемента нет в списке");
         assertEquals(1,myArrayList.size());
     }
 
@@ -43,6 +47,9 @@ class MyArrayListTest {
 
     @Test
     void isEmpty() {
+        assertEquals(2,myArrayList.size());
+        myArrayList.clear();
+        assertEquals(0,myArrayList.size());
         assertTrue(myArrayList.isEmpty());
     }
 
@@ -60,29 +67,58 @@ class MyArrayListTest {
 
     @Test
     void iterator() {
-        // Получаем итератор
-        Iterator<Integer> myIterator = myArrayList.iterator();
-
+        myIterator = myArrayList.iterator();
         // Проверяем, что есть элементы
         assertTrue(myIterator.hasNext());
-
         // Проверяем первый элемент
         assertEquals(1, myIterator.next());
-
         // Проверяем второй элемент
         assertEquals(2, myIterator.next());
-
-        // Проверяем, что больше нет элементов
-        assertFalse(myIterator.hasNext());
-
-        // Удаляем второй элемент
-        myIterator.remove();
-
-        // Проверяем, что остался один элемент
-        assertEquals(1, myArrayList.size());
-
-        // Проверяем оставшиеся элементы
+    }
+    @Test
+    void iteratorNonIndex() {
         myIterator = myArrayList.iterator();
-        assertEquals(1, myIterator.next());
+        assertNotEquals(2,myIterator.next(),"Нет такого элемента");
+    }
+
+    @Test
+    void iteratorRemoveElement() {
+        myIterator = myArrayList.iterator();
+        assertEquals(2, myArrayList.size());
+        while (myIterator.hasNext()) {
+            myIterator.next();
+            myIterator.remove();
+        }
+        assertEquals(0, myArrayList.size());
+    }
+
+    @Test
+    void iteratorOverCountElements() {
+        Random random = new Random();
+        int count = 10000;
+        for (int i = 0; i < count; i++) {
+            myArrayList.add(random.nextInt(100));
+        }
+        assertEquals(count+2, myArrayList.size());
+    }
+
+    @Test
+    void testInvalidInput() {
+        // Проверяем, что при невалидном вводе выбрасывается исключение
+        assertThrows(
+                NumberFormatException.class, // Ожидаемый тип исключения
+                () -> myArrayList.add(Integer.valueOf("abc")),    // Код, который может выбросить исключение
+                "Ожидалось исключение при парсинге невалидного числа"
+        );
+    }
+
+    @Test
+    void testNullInput() {
+        // Проверяем обработку null
+        assertThrows(
+                NullPointerException.class,
+                () -> myArrayList.add(null),
+                "Ожидалось исключение при парсинге null"
+        );
     }
 }

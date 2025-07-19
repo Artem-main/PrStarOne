@@ -9,8 +9,13 @@ public class MyArrayList <E> implements CustomArrayList <E> {
 
     @Override
     public boolean add(E element) {
-        myList.add(element);
-        return true;
+        try {
+            return myList.add(element);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Некорректное числовое значение" + e);
+        } catch (NullPointerException e) {
+            throw new NullPointerException("Нельзя добавить null" + e);
+        }
     }
 
     @Override
@@ -31,8 +36,7 @@ public class MyArrayList <E> implements CustomArrayList <E> {
 
     @Override
     public boolean isEmpty() {
-        myList.isEmpty();
-        return true;
+        return myList.isEmpty();;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class MyArrayList <E> implements CustomArrayList <E> {
 
     @Override
     public boolean isEmpty() {
-        return myList.isEmpty();;
+        return myList.isEmpty();
     }
 
     @Override

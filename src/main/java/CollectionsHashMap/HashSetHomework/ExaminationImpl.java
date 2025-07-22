@@ -7,6 +7,7 @@ public class ExaminationImpl implements Examination {
     private final Map<StudentKey, Integer> results = new ConcurrentHashMap<>();
     private final Map<String, List<Integer>> subjectGrades = new ConcurrentHashMap<>();
     private final List<Student> excellentStudents = new ArrayList<>();
+    private final List<Student> moreThanOnce = new ArrayList<>();
     private final Set<String> allSubjects = new HashSet<>();
 
     @Override
@@ -27,6 +28,10 @@ public class ExaminationImpl implements Examination {
             if (excellentStudents.size() > 5) {
                 excellentStudents.remove(0);
             }
+        }
+
+        if (results.containsKey(key)) {
+            moreThanOnce.add(new Student(firstName, lastName, subject, grade));
         }
     }
 
@@ -57,7 +62,12 @@ public class ExaminationImpl implements Examination {
         return allSubjects;
     }
 
-    private static class StudentKey {
+    @Override
+    public List <Student> getResultMoreOnce() {
+        return moreThanOnce;
+    }
+
+    static class StudentKey {
         private final String firstName;
         private final String lastName;
         private final String subject;

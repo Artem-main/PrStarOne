@@ -18,6 +18,8 @@ public interface Examination {
 
     // Получить все сданные предметы
     Set<String> getAllSubjects();
+
+    List <Student> getResultMoreOnce();
 }
 
 class Student {

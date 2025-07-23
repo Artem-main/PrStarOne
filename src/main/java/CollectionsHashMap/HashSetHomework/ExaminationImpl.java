@@ -13,7 +13,14 @@ public class ExaminationImpl implements Examination {
     @Override
     public void addResult(String firstName, String lastName, String subject, int grade) {
         StudentKey key = new StudentKey(firstName, lastName, subject);
-        results.put(key, grade);
+        try {
+            if (grade <= 5 && grade >= 0) {
+                results.put(key, grade);
+            }
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException("Некорректная оценка " + e);
+        }
+
 
         // Обновляем список оценок по предмету
         subjectGrades.computeIfAbsent(subject, k -> new ArrayList<>()).add(grade);

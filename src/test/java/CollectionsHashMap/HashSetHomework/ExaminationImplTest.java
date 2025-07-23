@@ -26,7 +26,7 @@ class ExaminationImplTest {
         moreThanOnce = new ArrayList<>();
         allSubjects = new HashSet<>();
 
-        results.put(first, 4);
+        results.put(first, 6);
         results.put(second, 3);
         results.put(three, 5);
     }

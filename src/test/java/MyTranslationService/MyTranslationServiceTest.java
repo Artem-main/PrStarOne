@@ -17,10 +17,20 @@ import static org.mockito.ArgumentMatchers.eq;
 @ExtendWith(MockitoExtension.class)
 class MyTranslationServiceTest_TODO {
 
+    private MyTranslationService myTranslationService;
+    private final String sentence = "One";
+    private final String targetLanguage = "ru";
+    private final String expResult = "Один";
+
     @Mock
     private Translate translate;
     @Mock
     private Translation translation;
+
+    @BeforeEach
+    void setUp () {
+        myTranslationService = new MyTranslationService(translate);
+    }
 
     /**
      * 1. Happy case test.
@@ -31,11 +41,6 @@ class MyTranslationServiceTest_TODO {
      */
     @Test
     void translateWithGoogle_anySentenceAndTargetLanguageIsRu_success() {
-        var myTranslationService = new MyTranslationService(translate);
-
-        var sentence = "Two";
-        var targetLanguage = "ru";
-        var expResult = "Два";
 
         Mockito.when(translate.translate(eq(sentence), any())).thenReturn(translation);
         Mockito.when(translation.getTranslatedText()).thenReturn(expResult);
@@ -58,9 +63,7 @@ class MyTranslationServiceTest_TODO {
      */
     @Test
     void translateWithGoogle_anySentenceAndTargetLanguageIsNotRu_failure() {
-        var myTranslationService = new MyTranslationService(translate);
 
-        var sentence = "One";
         var targetLanguage = "es";
 
         assertThrows (
@@ -81,10 +84,6 @@ class MyTranslationServiceTest_TODO {
      */
     @Test
     void translateWithGoogle_googleTranslateThrowsException_failure() {
-        var myTranslationService = new MyTranslationService(translate);
-
-        var sentence = "One";
-        var targetLanguage = "ru";
 
         Mockito.when(translate.translate(eq(sentence), any())).thenThrow(new RuntimeException());
 

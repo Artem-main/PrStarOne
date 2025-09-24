@@ -1,0 +1,18 @@
+package PersFinance.src.main.java.ru.productstar.servlets.listeners;
+
+
+import javax.servlet.ServletContextAttributeEvent;
+import javax.servlet.ServletContextAttributeListener;
+
+public class LogAttributeChanges implements ServletContextAttributeListener {
+
+    @Override
+    public void attributeAdded(ServletContextAttributeEvent event) {
+        event.getServletContext().log(String.format("[LogAttributeChanges] New value of %s: %s", event.getName(), event.getValue()));
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent event) {
+        event.getServletContext().log(String.format("[LogAttributeChanges] Old value of %s: %s", event.getName(), event.getValue()));
+    }
+}

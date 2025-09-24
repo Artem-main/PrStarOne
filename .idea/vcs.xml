@@ -9,6 +9,8 @@
     <option name="synchronizeBranchProtectionRules" value="false" />
   </component>
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/java-oop-ps" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/product-star" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src" vcs="Git" />
   </component>
 </project>
